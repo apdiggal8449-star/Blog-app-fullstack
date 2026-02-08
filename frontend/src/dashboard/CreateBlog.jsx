@@ -64,7 +64,7 @@ function CreateBlog() {
 
       // ✅ API call
       const { data } = await axios.post(
-        "https://mern-my-blog-project-62at.vercel.app/api/blogs/create",
+        "https://blog-app-fullstack-9jah.onrender.com/api/blogs/create",
         formData,
         {
           withCredentials: true,
