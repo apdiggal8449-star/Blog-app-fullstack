@@ -10,7 +10,7 @@ function MyBlogs() {
   const handleDelete = async id => {
     try {
       const res = await axios.delete(
-        `https://mern-my-blog-project.onrender.com/api/blogs/delete/${id}`,
+        `https://blog-app-fullstack-9jah.onrender.com/api/blogs/delete/${id}`,
         { withCredentials: true }
       );
       toast.success(res.data.message || "Blog deleted successfully");
