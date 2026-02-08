@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
     if (token) {
       setIsAuthenticated(true);
       axios
-        .get("http://localhost:2890/api/users/my-profile", {
+        .get("https://blog-app-fullstack-9jah.onrender.com/api/users/my-profile", {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then(res => setProfile(res.data))
@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
   // Fetch all blogs
   useEffect(() => {
     axios
-      .get("http://localhost:2890/api/blogs/all-blogs")
+      .get("https://blog-app-fullstack-9jah.onrender.com/api/blogs/all-blogs")
       .then(res => setBlogs(res.data.blogs || []))
       .catch(err => console.log(err));
   }, []);
