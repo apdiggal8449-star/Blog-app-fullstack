@@ -52,7 +52,7 @@ function Register() {
       console.log("📤 Sending FormData:", Object.fromEntries(formData.entries()));
 
       const { data } = await axios.post(
-        "http://localhost:2890/api/users/register",
+        "https://blog-app-fullstack-9jah.onrender.com/api/users/register",
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
