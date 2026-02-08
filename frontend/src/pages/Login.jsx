@@ -21,7 +21,7 @@ const Login = () => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:2890/api/users/login",
+        "https://blog-app-fullstack-9jah.onrender.com/api/users/login",
         { email, password, role },
         { withCredentials: true }
       );
