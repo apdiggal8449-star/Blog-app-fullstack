@@ -8,7 +8,7 @@ function Creators() {
     const fetchCreators = async () => {
       try {
         const { data } = await axios.get(
-          "https://localhost:2890/api/users/admins",
+          "https://blog-app-fullstack-9jah.onrender.com/api/users/admins",
           {
             withCredentials: true,
           }
