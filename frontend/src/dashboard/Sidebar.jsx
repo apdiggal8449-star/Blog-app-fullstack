@@ -24,7 +24,7 @@ function Sidebar({ setComponent }) {
     e.preventDefault();
     try {
       const { data } = await axios.get(
-        "http://localhost:8090/api/users/logout",
+        "https://blog-app-fullstack-9jah.onrender.com/api/users/logout",
         { withCredentials: true }
       );
       toast.success(data.message);
