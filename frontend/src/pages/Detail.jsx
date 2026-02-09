@@ -10,12 +10,14 @@ function Detail() {
   useEffect(() => {
     const fetchblogs = async () => {
       try {
+        const token = localStorage.getItem("jwt"); // get token from storage
         const { data } = await axios.get(
           `https://blog-app-fullstack-9jah.onrender.com/api/blogs/single-blog/${id}`,
 
           {
             withCredentials: true,
             headers: {
+                 Authorization: `Bearer ${token}`, // ✅ send token
                 "Content-Type": "application/json",
             },
           }
