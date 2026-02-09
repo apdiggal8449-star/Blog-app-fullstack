@@ -7,7 +7,7 @@ function Creator() {
   useEffect(() => {
     const fetchAdmins = async () => {
       const { data } = await axios.get(
-        "https://mern-my-blog-project.onrender.com/api/users/admins",
+        "https://blog-app-fullstack-9jah.onrender.com/api/users/admins",
         {
           withCredentials: true,
         }
