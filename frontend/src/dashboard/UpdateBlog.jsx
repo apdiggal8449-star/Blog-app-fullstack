@@ -36,9 +36,13 @@ function UpdateBlog() {
   // Fetch blog data on mount
   useEffect(() => {
     const fetchBlog = async () => {
+      const token = localStorage.getItem("jwt");
       try {
         const { data } = await axios.get(
           `https://blog-app-fullstack-9jah.onrender.com/api/blogs/single-blog/${id}`,
+          headers: {
+      Authorization: `Bearer ${token}`,
+    },
           { withCredentials: true }
         );
         setTitle(data?.title || "");
