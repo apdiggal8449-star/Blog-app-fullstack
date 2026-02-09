@@ -38,7 +38,7 @@ const blogData = {
   createdBy,  
   blogImage: {  
     public_id: cloudinaryResponse.public_id,  
-    url: cloudinaryResponse.url,  
+    url: cloudinaryResponse.secure_url, // ✅ yaha change
   },  
 };  
 const blog = await Blog.create(blogData);  
