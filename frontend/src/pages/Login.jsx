@@ -23,7 +23,7 @@ const Login = () => {
       const { data } = await axios.post(
         "https://blog-app-fullstack-9jah.onrender.com/api/users/login",
         { email, password, role },
-        //{ withCredentials: true }
+        { withCredentials: true }
       );
 
       console.log("Login Success:", data);
@@ -31,7 +31,7 @@ const Login = () => {
       
       // ✅ Save token & context
       localStorage.setItem("jwt", data.token);
-console.log("Saved token:", localStorage.getItem("jwt"));
+//console.log("Saved token:", localStorage.getItem("jwt"));
 
       setProfile(data.user);
       setIsAuthenticated(true);
