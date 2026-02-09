@@ -11,6 +11,8 @@ export const AuthProvider = ({ children }) => {
   // Restore user on page refresh
   useEffect(() => {
     const token = localStorage.getItem("jwt");
+    console.log(localStorage.getItem("jwt"));
+
     if (token) {
       setIsAuthenticated(true);
       axios
