@@ -27,10 +27,12 @@ const Login = () => {
       );
 
       console.log("Login Success:", data);
-      console.log(localStorage.getItem("jwt"));
+    
       
       // ✅ Save token & context
       localStorage.setItem("jwt", data.token);
+console.log("Saved token:", localStorage.getItem("jwt"));
+
       setProfile(data.user);
       setIsAuthenticated(true);
 
