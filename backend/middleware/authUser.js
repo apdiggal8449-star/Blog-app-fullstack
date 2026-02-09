@@ -4,25 +4,13 @@ import jwt from "jsonwebtoken";
 //Authentication
 export const isAuthenticated = async (req, res, next) => {
   try {
-    let token;
+  const authHeader = req.headers.authorization;
 
-    // 1. Check Authorization header
-    if (
-      req.headers.authorization &&
-      req.headers.authorization.startsWith("Bearer")
-    ) {
-      token = req.headers.authorization.split(" ")[1];
-    }
-    // 2. Check cookie
-    else if (req.cookies.jwt) {
-      token = req.cookies.jwt;
-    }
-
-    console.log("Middleware token:", token);
-
-    if (!token) {
+    if (!authHeader) {
       return res.status(401).json({ error: "User not authenticated" });
     }
+
+    const token = authHeader.split(" ")[1];
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
     const user = await User.findById(decoded.userId);
@@ -34,7 +22,7 @@ export const isAuthenticated = async (req, res, next) => {
     req.user = user;
     next();
   } catch (error) {
-    console.log("Auth error:", error);
+    console.log("Error in auth:", error);
     return res.status(401).json({ error: "User not authenticated" });
   }
 };
