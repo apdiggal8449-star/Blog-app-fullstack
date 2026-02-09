@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 function Creators() {
   const [creators, setCreators] = useState([]);
-  console.log(creators);
+  //console.log(creators);
   useEffect(() => {
     const fetchCreators = async () => {
       try {
