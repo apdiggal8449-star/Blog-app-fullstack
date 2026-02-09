@@ -5,7 +5,7 @@ function UserProfile() {
   const { profile } = useAuth();
 
   useEffect(() => {
-    console.log("User profile:", profile);
+  //  console.log("User profile:", profile);
   }, [profile]);
 
   if (!profile) {
