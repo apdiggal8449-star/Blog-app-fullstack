@@ -49,7 +49,7 @@ function Register() {
       formData.append("education", education);
       formData.append("photo", photo);
 
-      console.log("📤 Sending FormData:", Object.fromEntries(formData.entries()));
+      //console.log("📤 Sending FormData:", Object.fromEntries(formData.entries()));
 
       const { data } = await axios.post(
         "https://blog-app-fullstack-9jah.onrender.com/api/users/register",
@@ -78,7 +78,7 @@ function Register() {
 
       navigate("/");
     } catch (error) {
-      console.log("REGISTER ERROR:", error.response?.data || error.message);
+     // console.log("REGISTER ERROR:", error.response?.data || error.message);
       toast.error(
         error.response?.data?.message ||
           "Registration failed. Please check all fields."
