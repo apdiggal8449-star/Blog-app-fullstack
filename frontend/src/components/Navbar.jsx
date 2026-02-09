@@ -138,12 +138,10 @@ function Navbar() {
                   LOGIN
                 </Link>
               ) : (
-                <button
-                  onClick={() => { handleLogout(); setShow(false); }}
-                  className="bg-red-600 text-white font-semibold px-4 py-2 rounded hover:bg-red-800 w-full text-center mt-2"
-                >
-                  LOGOUT
-                </button>
+               <form onSubmit={handleSubmit}>
+  <button type="submit">Logout</button>
+</form>
+
               )}
             </ul>
           </div>
