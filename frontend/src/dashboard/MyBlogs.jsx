@@ -145,7 +145,7 @@ await axios.delete(
   );
 }
 
-export default MyBlogs;
+
 
 
 export default MyBlogs;
