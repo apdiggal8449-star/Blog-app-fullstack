@@ -85,12 +85,9 @@ function Navbar() {
                   className="w-10 h-10 rounded-full cursor-pointer border-2 border-gray-400 hover:border-blue-500"
                 />
 
-                <button
-                  onClick={handleLogout}
-                  className="bg-red-600 text-white font-semibold hover:bg-red-800 duration-300 px-4 py-2 rounded"
-                >
-                  LOGOUT
-                </button>
+                 <form onSubmit={handleLogout}>
+  <button type="submit">Logout</button>
+</form>
               </>
             )}
           </div>
@@ -138,7 +135,7 @@ function Navbar() {
                   LOGIN
                 </Link>
               ) : (
-               <form onSubmit={handleSubmit}>
+               <form onSubmit={handleLogout}>
   <button type="submit">Logout</button>
 </form>
 
