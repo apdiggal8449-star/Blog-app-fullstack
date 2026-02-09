@@ -10,22 +10,31 @@ export const AuthProvider = ({ children }) => {
 
   // Restore user on page refresh
   useEffect(() => {
-    const token = localStorage.getItem("jwt");
-    console.log(localStorage.getItem("jwt"));
+  const token = localStorage.getItem("jwt");
+  console.log("Token from storage:", token);
 
-    if (token) {
-      setIsAuthenticated(true);
-      axios
-        .get("https://blog-app-fullstack-9jah.onrender.com/api/users/my-profile", {
-          headers: { Authorization: `Bearer ${token}` },
-        })
-        .then(res => setProfile(res.data))
-        .catch(() => {
-          setIsAuthenticated(false);
-          localStorage.removeItem("jwt");
-        });
+  if (!token) return;
+
+  axios.get(
+    "https://blog-app-fullstack-9jah.onrender.com/api/users/my-profile",
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     }
-  }, []);
+  )
+  .then((res) => {
+    setProfile(res.data);
+    setIsAuthenticated(true);
+  })
+  .catch((err) => {
+    console.log("Profile error:", err.response?.data);
+    localStorage.removeItem("jwt");
+    setIsAuthenticated(false);
+  });
+
+}, []);
+
 
   // Fetch all blogs
   useEffect(() => {
