@@ -9,8 +9,9 @@ function Detail() {
   console.log(blogs);
   useEffect(() => {
     const fetchblogs = async () => {
+          const token = localStorage.getItem("jwt"); // get token from storage
       try {
-        const token = localStorage.getItem("jwt"); // get token from storage
+       // const token = localStorage.getItem("jwt"); // get token from storage
         const { data } = await axios.get(
           `https://blog-app-fullstack-9jah.onrender.com/api/blogs/single-blog/${id}`,
 
