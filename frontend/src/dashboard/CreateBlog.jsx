@@ -61,6 +61,8 @@ function CreateBlog() {
       formData.append("category", category);
       formData.append("about", about);
       formData.append("blogImage", blogImage);
+      const token = localStorage.getItem("jwt"); // get token from storage
+
 
       // ✅ API call
       const { data } = await axios.post(
