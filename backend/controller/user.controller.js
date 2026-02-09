@@ -7,9 +7,9 @@ import createTokenAndSaveCookies from "../jwt/AuthToken.js";
 export const register = async (req, res) => {
   try {
     
-    console.log("BODY =>", req.body);
-    console.log("FILES =>", req.files);
-    console.log("Register attempt:", req.body);
+    //console.log("BODY =>", req.body);
+    //console.log("FILES =>", req.files);
+    //console.log("Register attempt:", req.body);
 
     // Photo required check
     if (!req.files || Object.keys(req.files).length === 0) {
@@ -39,7 +39,7 @@ export const register = async (req, res) => {
     // Upload photo to Cloudinary
     const cloudinaryResponse = await cloudinary.uploader.upload(photo.tempFilePath);
     if (!cloudinaryResponse || cloudinaryResponse.error) {
-      console.log("Cloudinary error:", cloudinaryResponse.error);
+    //  console.log("Cloudinary error:", cloudinaryResponse.error);
     }
 
     // Hash password
@@ -63,7 +63,7 @@ export const register = async (req, res) => {
 
     // Generate JWT token
     const token = await createTokenAndSaveCookies(newUser._id, res);
-    console.log("Signup Token: ", token);
+   // console.log("Signup Token: ", token);
 
     res.status(201).json({
       message: "User registered successfully",
@@ -89,14 +89,14 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
   try {
     const { email, password, role } = req.body;
-    console.log("Login attempt:", { email, role });
+   // console.log("Login attempt:", { email, role });
 
     if (!email || !password || !role) {
       return res.status(400).json({ message: "Please fill all required fields" });
     }
 
     const user = await User.findOne({ email }).select("+password");
-    console.log("User from DB:", user);
+  //  console.log("User from DB:", user);
 
     if (!user) {
       console.log("User not found");
@@ -104,7 +104,7 @@ export const login = async (req, res) => {
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
-    console.log("Password match:", isMatch);
+   // console.log("Password match:", isMatch);
 
     if (!isMatch) {
       console.log("Password incorrect");
@@ -112,12 +112,12 @@ export const login = async (req, res) => {
     }
 
     if (user.role !== role) {
-      console.log(`Role mismatch: ${role} vs ${user.role}`);
+    //  console.log(`Role mismatch: ${role} vs ${user.role}`);
       return res.status(400).json({ message: `Given role ${role} not found` });
     }
 
     const token = await createTokenAndSaveCookies(user._id, res);
-    console.log("Login Token: ", token);
+    //console.log("Login Token: ", token);
 
     res.status(200).json({
       message: "User logged in successfully",
@@ -165,7 +165,7 @@ export const getMyProfile = async (req, res) => {
     const user = await User.findById(req.user._id); // middleware se user id
     if (!user) return res.status(404).json({ message: "User not found" });
 
-    console.log("Profile fetched:", user); // ✅ debug
+   // console.log("Profile fetched:", user); // ✅ debug
 
     res.status(200).json({ user }); // must include phone, name, email, role, photo
   } catch (err) {
