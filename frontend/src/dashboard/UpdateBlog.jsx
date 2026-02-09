@@ -39,13 +39,19 @@ function UpdateBlog() {
     
       try {
           const token = localStorage.getItem("jwt");
-        const { data } = await axios.get(
-          `https://blog-app-fullstack-9jah.onrender.com/api/blogs/single-blog/${id}`,
-          headers: {
+
+const { data } = await axios.put(
+  `https://blog-app-fullstack-9jah.onrender.com/api/blogs/update/${id}`,
+  formData,
+  {
+    headers: {
       Authorization: `Bearer ${token}`,
+      "Content-Type": "multipart/form-data",
     },
-          { withCredentials: true }
-        );
+    withCredentials: true,
+  }
+);
+
         setTitle(data?.title || "");
         setCategory(data?.category || "");
         setAbout(data?.about || "");
@@ -88,14 +94,20 @@ function UpdateBlog() {
     }
 
     try {
-      const { data } = await axios.put(
-        `http://localhost:8090/api/blogs/update/${id}`,
-        formData,
-        {
-          withCredentials: true,
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
+     const token = localStorage.getItem("jwt");
+
+const { data } = await axios.put(
+  `https://blog-app-fullstack-9jah.onrender.com/api/blogs/update/${id}`,
+  formData,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "multipart/form-data",
+    },
+    withCredentials: true,
+  }
+);
+
 
       toast.success(data.message || "Blog updated successfully");
 
