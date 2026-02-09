@@ -171,7 +171,7 @@ const { data } = await axios.put(
           <div className="mb-4">
             <label className="block mb-2 font-semibold">BLOG IMAGE</label>
             <img
-              src={blogImagePreview || existingBlogImage || "/imgPL.webp"}
+              src={blogImagePreview || existingBlogImage ||"https://via.placeholder.com/600x400?text=No+Image"}
               alt="Blog Main"
               className="w-full h-auto object-cover mb-4 rounded-md"
             />
