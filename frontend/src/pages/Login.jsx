@@ -26,12 +26,12 @@ const Login = () => {
         { withCredentials: true }
       );
 
-      console.log("Login Success:", data);
+     //console.log("Login Success:", data);
     
       
       // ✅ Save token & context
       localStorage.setItem("jwt", data.token);
-console.log("Saved token:", localStorage.getItem("jwt"));
+//console.log("Saved token:", localStorage.getItem("jwt"));
 
       setProfile(data.user);
       setIsAuthenticated(true);
@@ -39,7 +39,7 @@ console.log("Saved token:", localStorage.getItem("jwt"));
       toast.success(data.message || "Login successful!");
       navigate("/"); // redirect to home
     } catch (err) {
-      console.error("Login Error:", err.response?.data || err);
+     // console.error("Login Error:", err.response?.data || err);
       toast.error(err.response?.data?.message || "Login failed");
     }
   };
