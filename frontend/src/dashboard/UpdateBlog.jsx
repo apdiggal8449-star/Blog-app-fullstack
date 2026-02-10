@@ -39,8 +39,7 @@ function UpdateBlog() {
   const fetchBlog = async () => {
     try {
       const token = localStorage.getItem("jwt");
-     // console.log("Token from storage:", token);
-
+     
       if (!token) throw new Error("User not logged in");
 
       const { data } = await axios.get(
@@ -52,8 +51,7 @@ function UpdateBlog() {
         }
       );
 
-     // console.log("Fetched blog data:", data); // ✅ should print the blog
-     // console.log(data.blogImage?.url || "");
+    
       setTitle(data.title || "");
       setCategory(data.category || "");
       setAbout(data.about || "");
