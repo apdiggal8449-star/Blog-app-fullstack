@@ -51,13 +51,15 @@ const { data } = await axios.get(
     withCredentials: true,
   }
 );
-   console.log(""fetch data",daat)
+    console.log("Fetched blog data:", data); // ✅ inside the function
+
         setTitle(data?.title || "");
         setCategory(data?.category || "");
         setAbout(data?.about || "");
         setExistingBlogImage(data?.blogImage?.url || "");
         setBlogImagePreview(data?.blogImage?.url || "");
       } catch (error) {
+         console.log("Fetch blog error:", err.response?.data);
         toast.error("Failed to fetch blog data");
       }
     };
