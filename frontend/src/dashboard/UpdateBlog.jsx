@@ -39,6 +39,7 @@ function UpdateBlog() {
     
       try {
           const token = localStorage.getItem("jwt");
+   if (!token) throw new Error("User not logged in");
 
 const { data } = await axios.get(
   `https://blog-app-fullstack-9jah.onrender.com/api/blogs/update/${id}`,
