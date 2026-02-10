@@ -7,7 +7,7 @@ import { useAuth } from "../context/AuthProvider"; // ✅ Global blogs state
 function UpdateBlog() {
   const navigateTo = useNavigate();
   const { id } = useParams();
-
+  if (!id) throw new Error("Blog ID not found");
   const { blogs, setBlogs } = useAuth(); // ✅ Global blogs state from context
 
   const [title, setTitle] = useState("");
@@ -40,7 +40,7 @@ function UpdateBlog() {
       try {
           const token = localStorage.getItem("jwt");
    if (!token) throw new Error("User not logged in");
-   if (!id) throw new Error("Blog ID not found");
+  
 const { data } = await axios.get(
   `https://blog-app-fullstack-9jah.onrender.com/api/blogs/update/${id}`,
   formData,
