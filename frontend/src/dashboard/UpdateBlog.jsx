@@ -7,7 +7,7 @@ import { useAuth } from "../context/AuthProvider"; // ✅ Global blogs state
 function UpdateBlog() {
   const navigateTo = useNavigate();
   const { id } = useParams();
- / console.log("Blog ID:", id);
+ // console.log("Blog ID:", id);
   if (!id) throw new Error("Blog ID not found");
   const { blogs, setBlogs } = useAuth(); // ✅ Global blogs state from context
 
@@ -39,7 +39,7 @@ function UpdateBlog() {
   const fetchBlog = async () => {
     try {
       const token = localStorage.getItem("jwt");
-      console.log("Token from storage:", token);
+     // console.log("Token from storage:", token);
 
       if (!token) throw new Error("User not logged in");
 
@@ -52,8 +52,8 @@ function UpdateBlog() {
         }
       );
 
-      console.log("Fetched blog data:", data); // ✅ should print the blog
-      console.log(data.blogImage?.url || "");
+     // console.log("Fetched blog data:", data); // ✅ should print the blog
+     // console.log(data.blogImage?.url || "");
       setTitle(data.title || "");
       setCategory(data.category || "");
       setAbout(data.about || "");
