@@ -33,7 +33,7 @@ function MyBlogs() {
 
   return (
     <div className="container mx-auto my-12 p-4 ml-[20px]">
-      <div className="grid w-auto gap-6 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 md:ml-10">
+      <div className="grid w-auto gap-6 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 md:ml-150">
         {blogs.map(blog => (
           <div key={blog._id} className="bg-white shadow-lg rounded-lg overflow-hidden">
             {blog.blogImage?.url && (
