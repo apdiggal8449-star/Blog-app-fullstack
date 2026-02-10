@@ -20,27 +20,30 @@ function Sidebar({ setComponent }) {
     navigateTo("/");
   };
 
- const handleLogout = async (e) => {
+const handleLogout = async (e) => {
   e.preventDefault();
   const token = localStorage.getItem("jwt");
+
   try {
     const { data } = await axios.get(
       "https://blog-app-fullstack-9jah.onrender.com/api/users/logout",
       {
         headers: { Authorization: `Bearer ${token}` },
-        withCredentials: true, // optional, if cookies are still used
       }
     );
 
     localStorage.removeItem("jwt");
     setIsAuthenticated(false);
-    toast.success(data.message);
+    toast.success(data?.message || "Logged out successfully");
     navigateTo("/login");
   } catch (error) {
-    console.log(error);
-    toast.error("Failed to logout");
+    console.log("Logout error:", error);
+    const message =
+      error?.response?.data?.message || error?.message || "Failed to logout";
+    toast.error(message);
   }
 };
+
 
 
   return (
