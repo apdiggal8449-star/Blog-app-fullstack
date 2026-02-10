@@ -18,7 +18,7 @@ function MyBlogs() {
         }
       );
       toast.success(res.data.message || "Blog deleted successfully");
-
+ //
       setBlogs(prev => prev.filter(blog => blog._id !== id));
     } catch (error) {
       toast.error(error.response?.data?.message || "Failed to delete blog");
