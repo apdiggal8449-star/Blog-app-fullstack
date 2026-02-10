@@ -95,7 +95,7 @@ function MyBlogs() {
   return (
     <div className="flex min-h-screen bg-gray-100">
       {/* Sidebar */}
-      <div
+      {/* <div
         className={`fixed z-40 inset-y-0 left-0 w-64 bg-white shadow-md transform transition-transform duration-300 ease-in-out
         ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 md:relative md:block`}
       >
@@ -107,7 +107,7 @@ function MyBlogs() {
           >
             <AiOutlineClose />
           </button>
-        </div>
+        </div>*/}
         {/* Sidebar content */}
         {/* <nav className="p-4">
           <Link className="block py-2 px-3 rounded hover:bg-gray-200" to="/">
