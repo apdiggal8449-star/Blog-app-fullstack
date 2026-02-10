@@ -40,7 +40,7 @@ function UpdateBlog() {
       try {
           const token = localStorage.getItem("jwt");
 
-const { data } = await axios.put(
+const { data } = await axios.get(
   `https://blog-app-fullstack-9jah.onrender.com/api/blogs/update/${id}`,
   formData,
   {
