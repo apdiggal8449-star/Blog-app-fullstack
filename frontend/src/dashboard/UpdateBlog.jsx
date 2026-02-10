@@ -51,7 +51,7 @@ const { data } = await axios.get(
     withCredentials: true,
   }
 );
-
+   console.log(""fetch data",daat)
         setTitle(data?.title || "");
         setCategory(data?.category || "");
         setAbout(data?.about || "");
