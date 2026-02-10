@@ -26,24 +26,7 @@ function Navbar() {
       console.log(error);
       toast.error("Failed to logout");
     }*/
- const handleLogout = async (e) => {
-  e.preventDefault();
-  try {
-    const { data } = await axios.get(
-      "https://blog-app-fullstack-9jah.onrender.com/api/users/logout",
-      { withCredentials: true } // ✅ send cookies automatically
-    );
-
-    localStorage.removeItem("jwt");
-    setIsAuthenticated(false);
-    toast.success(data.message);
-    navigateTo("/login");
-  } catch (error) {
-    console.log(error);
-    toast.error("Failed to logout");
-  }
-};
-
+const handleLogout = async (e) => { e.preventDefault(); const token = localStorage.getItem("jwt"); try { const { data } = await axios.get( "https://blog-app-fullstack-9jah.onrender.com/api/users/logout", { headers: { Authorization: Bearer ${token}, }, } ); localStorage.removeItem("jwt"); setIsAuthenticated(false); toast.success(data.message); navigateTo("/login"); } catch (error) { console.log(error); toast.error("Failed to logout"); } };
 
 
   // ✅ User photo (default if missing)
