@@ -36,37 +36,40 @@ function UpdateBlog() {
 
   // Fetch blog data on mount
   useEffect(() => {
-    const fetchBlog = async () => {
-    
-      try {
-          const token = localStorage.getItem("jwt");
-   if (!token) throw new Error("User not logged in");
-  
-const { data } = await axios.get(
-  `https://blog-app-fullstack-9jah.onrender.com/api/blogs/update/${id}`,
-  formData,
-  {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "multipart/form-data",
-    },
-    withCredentials: true,
-  }
-);
-    console.log("Fetched blog data:", data); // ✅ inside the function
+  const fetchBlog = async () => {
+    try {
+      const token = localStorage.getItem("jwt");
+      console.log("Token from storage:", token);
 
-        setTitle(data?.title || "");
-        setCategory(data?.category || "");
-        setAbout(data?.about || "");
-        setExistingBlogImage(data?.blogImage?.url || "");
-        setBlogImagePreview(data?.blogImage?.url || "");
-      } catch (error) {
-         console.log("Fetch blog error:", error.response?.data);
-        toast.error("Failed to fetch blog data");
-      }
-    };
-    fetchBlog();
-  }, [id]);
+      if (!token) throw new Error("User not logged in");
+
+      const { data } = await axios.get(
+        `https://blog-app-fullstack-9jah.onrender.com/api/blogs/single-blog/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      console.log("Fetched blog data:", data); // ✅ should print the blog
+      setTitle(data.title || "");
+      setCategory(data.category || "");
+      setAbout(data.about || "");
+      setExistingBlogImage(data.blogImage?.url || "");
+      setBlogImagePreview(data.blogImage?.url || "");
+    } catch (err) {
+      console.error(
+        "Fetch blog error:",
+        err.response?.data || err.message || err
+      );
+      toast.error("Failed to fetch blog data");
+    }
+  };
+
+  fetchBlog();
+}, [id]);
+
 
   // Handle blog update
   const handleUpdate = async (e) => {
