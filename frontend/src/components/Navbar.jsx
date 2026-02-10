@@ -25,21 +25,13 @@ function Navbar() {
     } catch (error) {
       console.log(error);
       toast.error("Failed to logout");
-    }
-  };  */
-  const handleLogout = async (e) => {
+    }*/
+ const handleLogout = async (e) => {
   e.preventDefault();
-
-  const token = localStorage.getItem("jwt");
-
   try {
     const { data } = await axios.get(
       "https://blog-app-fullstack-9jah.onrender.com/api/users/logout",
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
+      { withCredentials: true } // ✅ send cookies automatically
     );
 
     localStorage.removeItem("jwt");
@@ -51,6 +43,7 @@ function Navbar() {
     toast.error("Failed to logout");
   }
 };
+
 
 
   // ✅ User photo (default if missing)
