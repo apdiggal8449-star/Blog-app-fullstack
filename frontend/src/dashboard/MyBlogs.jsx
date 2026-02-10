@@ -8,22 +8,25 @@ function MyBlogs() {
   const { blogs, setBlogs } = useAuth();
 
   const handleDelete = async id => {
+       if (!window.confirm("Are you sure you want to delete this blog?")) return;
+
     try {
+      const token = localStorage.getItem("jwt"); // get stored token
+
       const res = await axios.delete(
         `https://blog-app-fullstack-9jah.onrender.com/api/blogs/delete/${id}`,
         {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          headers: { Authorization: `Bearer ${token}` },
         }
       );
+
       toast.success(res.data.message || "Blog deleted successfully");
- //
-      setBlogs(prev => prev.filter(blog => blog._id !== id));
+      setBlogs((prev) => prev.filter((blog) => blog._id !== id));
     } catch (error) {
       toast.error(error.response?.data?.message || "Failed to delete blog");
     }
   };
+
 
   if (!blogs || blogs.length === 0)
     return <p className="text-center mt-12 text-gray-500">You have not posted any blog yet!</p>;
