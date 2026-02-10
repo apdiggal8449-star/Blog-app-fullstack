@@ -100,7 +100,7 @@ function UpdateBlog() {
     if (blogImageFile) {
       formData.append("blogImage", blogImageFile);
     }
-
+//
     try {
      const token = localStorage.getItem("jwt");
 
