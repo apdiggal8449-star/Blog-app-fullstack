@@ -59,7 +59,7 @@ const { data } = await axios.get(
         setExistingBlogImage(data?.blogImage?.url || "");
         setBlogImagePreview(data?.blogImage?.url || "");
       } catch (error) {
-         console.log("Fetch blog error:", err.response?.data);
+         console.log("Fetch blog error:", error.response?.data);
         toast.error("Failed to fetch blog data");
       }
     };
