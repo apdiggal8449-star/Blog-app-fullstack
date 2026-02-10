@@ -17,8 +17,9 @@ h1,h2,h3,h4,h5,h6{
 span{
     font-family: 'Fredoka', sans-serif;
 }
-@media (min-width:639px){
+/*@media (min-width:639px){
 .min{
   margin-left:260px;  
 }
 }
+*/
