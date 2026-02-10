@@ -32,7 +32,7 @@ function MyBlogs() {
     return <p className="text-center mt-12 text-gray-500">You have not posted any blog yet!</p>;
 
   return (
-    <div className="container w-[800px] my-12 p-4 ml-[220px]">
+    <div className="container w-[800px] my-12 p-4 ml-[260px]">
       <div className="grid w-auto gap-6 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 md:ml-250 lg:ml-250">
         {blogs.map(blog => (
           <div key={blog._id} className="bg-white shadow-lg rounded-lg overflow-hidden">
