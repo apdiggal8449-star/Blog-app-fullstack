@@ -96,7 +96,7 @@ function MyBlogs() {
     <div className="flex min-h-screen bg-gray-100">
       {/* Sidebar */}
       {/* <div
-        className={`fixed z-40 inset-y-0 left-0 w-64 bg-white shadow-md transform transition-transform duration-300 ease-in-out
+        className={`fixed z-20 inset-y-0 left-0 w-64 bg-white shadow-md transform transition-transform duration-300 ease-in-out
         ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 md:relative md:block`}
       >
         <div className="p-4 flex justify-between items-center border-b">
@@ -126,12 +126,12 @@ function MyBlogs() {
       <div className="flex-1 ml-0 md:ml-64 p-4">
         {/* Mobile menu button */}
         <div className="md:hidden mb-4 flex justify-between items-center">
-          <button
+          {/*<button
             className="text-2xl"
             onClick={() => setSidebarOpen(true)}
           >
             <HiMenu />
-          </button>
+          </button>*/}
           <h2 className="text-2xl font-bold">My Blogs</h2>
         </div>
 
