@@ -17,7 +17,7 @@ function Dashboard() {
   }
   return (
     <div>
-      <div>
+      <div className='flex gap-4'>
         <Sidebar component={component} setComponent={setComponent} />
         {component === "My Profile" ? (
           <MyProfile />
