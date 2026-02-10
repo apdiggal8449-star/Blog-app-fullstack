@@ -109,7 +109,7 @@ function MyBlogs() {
           </button>
         </div>
         {/* Sidebar content */}
-        <nav className="p-4">
+        {/* <nav className="p-4">
           <Link className="block py-2 px-3 rounded hover:bg-gray-200" to="/">
             Home
           </Link>
@@ -120,7 +120,7 @@ function MyBlogs() {
             My Blogs
           </Link>
         </nav>
-      </div>
+      </div>*/}
 
       {/* Main Content */}
       <div className="flex-1 ml-0 md:ml-64 p-4">
