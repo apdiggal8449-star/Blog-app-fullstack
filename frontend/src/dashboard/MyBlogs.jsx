@@ -11,7 +11,11 @@ function MyBlogs() {
     try {
       const res = await axios.delete(
         `https://blog-app-fullstack-9jah.onrender.com/api/blogs/delete/${id}`,
-        { withCredentials: true }
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
       toast.success(res.data.message || "Blog deleted successfully");
 
